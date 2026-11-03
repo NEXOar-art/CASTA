@@ -17,7 +17,8 @@
       --header-h:84px;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-snap-type:y proximity;scroll-padding-top:var(--header-h);overflow-y:scroll;-webkit-text-size-adjust:100%}
+    /* Scroll fluido y elegante: sin saltos ni snap */
+    html{scroll-behavior:auto;overflow-y:scroll;-webkit-text-size-adjust:100%}
     body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
     img{max-width:100%}
     a{color:inherit;text-decoration:none}
@@ -51,14 +52,14 @@
     .menu-btn.open i:nth-child(1){transform:translateY(6px) rotate(45deg)}
     .menu-btn.open i:nth-child(2){opacity:0}
     .menu-btn.open i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    .mobile-nav{position:fixed;top:var(--header-h);left:0;right:0;z-index:99;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(53,60,42,.14);display:grid;gap:0;overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,.61,.36,1),opacity .3s ease}
-    .mobile-nav.open{max-height:420px;opacity:1}
+    .mobile-nav{position:fixed;top:var(--header-h);left:0;right:0;z-index:99;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(53,60,42,.14);display:grid;gap:0;overflow:hidden;max-height:0;opacity:0;transition:max-height .45s cubic-bezier(.22,.61,.36,1),opacity .3s ease}
+    .mobile-nav.open{max-height:460px;opacity:1}
     .mobile-nav a.mn-link{padding:15px 24px;font-size:15px;color:#4d5a4f;border-bottom:1px solid #ece7db}
     .mobile-nav a.mn-link:active{background:var(--sage)}
     .mobile-nav .nav-cta{margin:16px 24px 20px}
 
     /* ============ BANNER PRINCIPAL ============ */
-    .hero-banner{width:100%;height:calc(100vh - var(--header-h));height:calc(100svh - var(--header-h));margin-top:var(--header-h);overflow:hidden;position:relative;scroll-snap-align:start;background:var(--ink)}
+    .hero-banner{width:100%;height:calc(100vh - var(--header-h));height:calc(100svh - var(--header-h));margin-top:var(--header-h);overflow:hidden;position:relative;background:var(--ink)}
     .hero-banner img{width:100%;height:112%;object-fit:cover;display:block;will-change:transform;animation:kenburns 24s ease-in-out infinite alternate}
     @keyframes kenburns{0%{transform:scale(1.02) translate3d(0,0,0)}33%{transform:scale(1.10) translate3d(-1.6%,-1%,0)}66%{transform:scale(1.14) translate3d(1.2%,-2%,0)}100%{transform:scale(1.04) translate3d(-.6%,1%,0)}}
     .hero-banner:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,59,52,.26) 0%,rgba(37,59,52,0) 26%,rgba(37,59,52,0) 76%,rgba(247,241,232,.20) 95%,rgba(247,241,232,.42) 100%);pointer-events:none}
@@ -69,7 +70,7 @@
     .scroll-hint:before{content:'';position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:rgba(255,253,248,.9);animation:hint 1.9s ease-in-out infinite}
     @keyframes hint{0%,100%{opacity:0;transform:translateY(0)}35%{opacity:1}70%{opacity:0;transform:translateY(13px)}}
 
-    /* ============ SOLO LÍNEA FINA DE NEÓN ENTRE SECCIONES ============ */
+    /* ============ LÍNEA FINA DE NEÓN ENTRE SECCIONES ============ */
     .divider{position:relative;height:1px;margin:0;background:transparent;overflow:visible}
     .divider.neon:before{content:'';position:absolute;left:6%;right:6%;top:0;height:1px;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,0),#ffffff 12%,#ffffff 88%,rgba(255,255,255,0));box-shadow:0 0 4px 0 rgba(255,255,255,.95),0 0 9px 1px rgba(255,255,255,.70),0 0 18px 2px rgba(255,255,255,.35);animation:neonPulse 4s ease-in-out infinite}
     .divider.neon:after{content:'';position:absolute;left:0;right:0;top:-11px;height:23px;background:radial-gradient(ellipse 58% 100% at 50% 50%,rgba(37,59,52,.22),rgba(37,59,52,0) 72%);pointer-events:none}
@@ -87,14 +88,13 @@
     .reveal-zoom{opacity:0;transform:scale(.955);transition:opacity .95s cubic-bezier(.22,.61,.36,1),transform .95s cubic-bezier(.22,.61,.36,1)}
     .reveal-left.in,.reveal-right.in,.reveal-zoom.in{opacity:1;transform:none}
     @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
       .reveal,.reveal-left,.reveal-right,.reveal-zoom{opacity:1!important;transform:none!important;transition:none}
       .hero-banner img{animation:none}
       .divider.neon:before{animation:none;opacity:.9}
     }
 
     /* ============ HERO ============ */
-    .hero{display:grid;grid-template-columns:.88fr 1.12fr;align-items:center;gap:45px;min-height:620px;padding:35px 0 72px;scroll-snap-align:start}
+    .hero{display:grid;grid-template-columns:.88fr 1.12fr;align-items:center;gap:45px;min-height:620px;padding:35px 0 72px}
     .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.19em;font-size:10px;font-weight:700;color:var(--coral)}
     .eyebrow:before{content:'';width:25px;height:1px;background:currentColor}
     .hero h1{font:500 clamp(44px,6.5vw,88px)/1.02 var(--serif);letter-spacing:-.05em;margin:23px 0}
@@ -120,7 +120,7 @@
 
     /* ============ HISTORIA ============ */
     section{scroll-margin-top:calc(var(--header-h) + 6px)}
-    .story{display:grid;grid-template-columns:1fr .8fr;gap:90px;padding:115px 0;align-items:center;scroll-snap-align:start}
+    .story{display:grid;grid-template-columns:1fr .8fr;gap:90px;padding:115px 0;align-items:center}
     .story h2,.section-heading h2,.contact h2{font:500 clamp(34px,5vw,58px)/1.08 var(--serif);letter-spacing:-.04em;margin:17px 0}
     .story h2 em,.section-heading h2 em,.contact h2 em{color:var(--coral);font-weight:500}
     .story-copy{color:#687066;line-height:1.85;font-size:14px;max-width:550px}
@@ -129,7 +129,7 @@
     .story-card p{font:italic 17px var(--serif);margin:20px 0 0}
 
     /* ============ GALERÍA ============ */
-    .gallery{background:#ede8dc;padding:94px 0 105px;scroll-snap-align:start;position:relative}
+    .gallery{background:#ede8dc;padding:94px 0 105px;position:relative}
     .section-heading{text-align:center;max-width:600px;margin:0 auto 45px}
     .section-heading .eyebrow{justify-content:center}
     .section-heading p{color:var(--muted);font-size:14px;line-height:1.7}
@@ -143,7 +143,7 @@
     .credit a{text-decoration:underline;text-underline-offset:3px}
 
     /* ============ CONTACTO (parte inferior) ============ */
-    .contact{padding:100px 0 84px;background:linear-gradient(180deg,var(--paper) 0%,#efe9dc 100%);scroll-snap-align:start}
+    .contact{padding:100px 0 84px;background:linear-gradient(180deg,var(--paper) 0%,#efe9dc 100%)}
     .contact-inner{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:start}
     .contact .intro{font-size:14px;margin-top:4px}
     .contact-grid{margin-top:30px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -182,6 +182,42 @@
     .lightbox.open{display:flex}
     .lightbox img{max-width:min(1050px,92vw);max-height:84vh;object-fit:contain;border-radius:7px}
     .lightbox button{position:absolute;top:20px;right:24px;border:0;background:#ffffff22;color:#fff;width:44px;height:44px;border-radius:50%;font-size:25px;cursor:pointer}
+
+    /* ============ FORMULARIO DE RESERVA ============ */
+    .reserva-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:22px}
+    .reserva-modal.open{display:flex}
+    .reserva-backdrop{position:absolute;inset:0;background:rgba(20,31,27,.74);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);animation:rmFade .35s ease both}
+    @keyframes rmFade{from{opacity:0}to{opacity:1}}
+    .reserva-card{position:relative;width:min(580px,100%);max-height:calc(100vh - 40px);max-height:calc(100svh - 40px);overflow-y:auto;overscroll-behavior:contain;background:var(--paper);border-radius:20px;padding:34px 34px 30px;box-shadow:0 34px 90px rgba(0,0,0,.42);animation:rmPop .5s cubic-bezier(.22,.61,.36,1) both}
+    @keyframes rmPop{from{opacity:0;transform:translate3d(0,26px,0) scale(.97)}to{opacity:1;transform:none}}
+    .reserva-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--green);font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s,color .2s}
+    .reserva-close:hover{background:var(--sage);transform:rotate(90deg)}
+    .reserva-card .eyebrow{margin-bottom:6px}
+    .reserva-card h3{font:500 clamp(28px,4.4vw,38px)/1.1 var(--serif);letter-spacing:-.035em;margin:12px 0 8px}
+    .reserva-card h3 em{color:var(--coral);font-weight:500}
+    .reserva-card>p{margin:0 0 24px;color:#687066;font-size:13.5px;line-height:1.7;max-width:430px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{margin-bottom:15px;display:flex;flex-direction:column;gap:7px}
+    .field label{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#5c6a5e}
+    .field label span{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none}
+    .field input,.field select{width:100%;padding:14px 15px;border:1px solid #cfd3c6;border-radius:11px;background:var(--white);color:var(--ink);font:400 14px var(--sans);transition:border-color .22s,box-shadow .22s,background .22s;appearance:none;-webkit-appearance:none}
+    .field select{background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23315d50' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:38px;cursor:pointer}
+    .field input:focus,.field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(49,93,80,.14)}
+    .field input::placeholder{color:#a3a89c}
+    .field.error input,.field.error select{border-color:#c0574a;box-shadow:0 0 0 3px rgba(192,87,74,.12)}
+    .field .msg{font-size:11px;color:#c0574a;min-height:0;display:none}
+    .field.error .msg{display:block}
+    .form-note{font-size:11.5px;color:var(--muted);line-height:1.6;margin:2px 0 18px}
+    .form-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .form-actions .button{flex:1 1 auto;min-width:190px}
+    .reserva-ok{text-align:center;padding:14px 0 6px;display:none}
+    .reserva-ok.show{display:block;animation:rmPop .5s cubic-bezier(.22,.61,.36,1) both}
+    .ok-badge{width:66px;height:66px;border-radius:50%;background:var(--sage);color:var(--green);display:grid;place-items:center;font-size:30px;margin:0 auto 18px;border:1px solid #c3d2bd}
+    .reserva-ok h3{margin:0 0 10px}
+    .reserva-ok p{color:#687066;font-size:13.5px;line-height:1.75;max-width:400px;margin:0 auto 20px}
+    .reserva-ok .resumen{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:16px 18px;text-align:left;margin:0 auto 22px;max-width:400px;display:grid;gap:8px;font-size:13px;color:#536257}
+    .reserva-ok .resumen b{color:var(--ink);font-weight:600}
+    body.locked{overflow:hidden}
 
     /* ================= RESPONSIVE ================= */
     @media(max-width:1100px){
@@ -230,6 +266,7 @@
       .mobile-cta{display:flex;position:fixed;z-index:120;bottom:12px;left:12px;right:12px;justify-content:center;box-shadow:0 8px 22px #1e302744;padding:15px 18px;font-size:13px}
       .footer-bottom{padding-bottom:78px;margin-bottom:0}
       .site-footer{padding-bottom:0}
+      .reserva-card{padding:28px 22px 24px;border-radius:18px}
     }
 
     @media(max-width:600px){
@@ -244,6 +281,9 @@
       .footer-bottom{justify-content:center;text-align:center}
       .scroll-hint{display:none}
       .divider.neon:before{left:4%;right:4%}
+      .form-row{grid-template-columns:1fr;gap:0}
+      .reserva-modal{padding:14px}
+      .form-actions .button{min-width:100%}
     }
 
     @media(max-width:420px){
@@ -262,6 +302,8 @@
       .mobile-cta{font-size:12px;padding:14px 12px}
       .gallery-grid{grid-template-rows:210px 175px 175px 175px 175px;gap:9px}
       .footer-social a{flex:1 1 100%;justify-content:center}
+      .reserva-card{padding:24px 17px 20px}
+      .reserva-card h3{font-size:26px}
     }
 
     @media(max-width:340px){
@@ -276,7 +318,6 @@
       .wrap{width:min(1280px,calc(100% - 80px))}
     }
 
-    /* Pantallas muy bajas (landscape móvil) */
     @media(max-height:520px){
       .hero-banner{height:calc(78vh - var(--header-h))}
       .banner-caption{bottom:20px}
@@ -294,7 +335,7 @@
         <a href="#contacto" data-target="contacto">Contacto</a>
       </nav>
       <div style="display:flex;align-items:center;gap:12px">
-        <a class="nav-cta" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Reservar mesa <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta js-reserva" href="#reservar" role="button">Reservar mesa <span aria-hidden="true">↗</span></a>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav"><i></i><i></i><i></i></button>
       </div>
     </div>
@@ -306,7 +347,7 @@
     <a class="mn-link" href="#experiencia">La experiencia</a>
     <a class="mn-link" href="#galeria">Galería</a>
     <a class="mn-link" href="#contacto">Contacto</a>
-    <a class="nav-cta" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Reservar por WhatsApp ↗</a>
+    <a class="nav-cta js-reserva" href="#reservar" role="button">Reservar mesa · WhatsApp</a>
   </nav>
 
   <main>
@@ -321,7 +362,7 @@
         <div class="eyebrow reveal">Sushi · Catamarca</div>
         <h1 class="reveal" data-delay="1">Una noche<br>para <em>saborear.</em></h1>
         <p class="intro reveal" data-delay="2">Buenos encuentros, piezas hechas para compartir y el placer de dejar que la noche encuentre su propio ritmo.</p>
-        <div class="hero-actions reveal" data-delay="3"><a class="button" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Reservá tu mesa <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#galeria">Descubrí CASTA</a></div>
+        <div class="hero-actions reveal" data-delay="3"><a class="button js-reserva" href="#reservar" role="button">Reservá tu mesa <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#galeria">Descubrí CASTA</a></div>
         <div class="small-facts reveal" data-delay="4"><div class="fact"><span class="stars">★★★★★</span><span>4,5 en Google</span></div><span>·</span><div class="fact">Abre a las 20:30</div></div>
       </div>
       <div class="hero-art reveal-right" aria-label="Sushi de CASTA">
@@ -358,7 +399,7 @@
         <div class="reveal-left">
           <div class="eyebrow">Contacto · Te esperamos esta noche</div>
           <h2>Nos vemos<br>en <em>CASTA.</em></h2>
-          <p class="intro">Un punto de encuentro para bajar un cambio y disfrutar de algo rico. Escribinos por WhatsApp y reservá tu mesa.</p>
+          <p class="intro">Un punto de encuentro para bajar un cambio y disfrutar de algo rico. Completá el formulario y reservá tu mesa.</p>
 
           <div class="contact-grid">
             <div class="contact-item">
@@ -388,7 +429,7 @@
           </div>
 
           <div class="contact-actions">
-            <a class="button" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Reservar por WhatsApp ↗</a>
+            <a class="button js-reserva" href="#reservar" role="button">Reservar mesa ↗</a>
             <a class="button button-outline" href="https://www.google.com/maps/dir/?api=1&destination=CASTA%2C+Mamerto+Medina+18%2C+Catamarca" target="_blank" rel="noreferrer">Cómo llegar ↗</a>
             <a class="button button-outline" href="tel:+543834889878">Llamar ahora</a>
           </div>
@@ -427,6 +468,7 @@
             <li><a href="#experiencia">La experiencia</a></li>
             <li><a href="#galeria">Galería</a></li>
             <li><a href="#contacto">Contacto</a></li>
+            <li><a class="js-reserva" href="#reservar" role="button">Reservar mesa</a></li>
           </ul>
         </div>
 
@@ -444,27 +486,120 @@
 
       <div class="footer-bottom">
         <span>© <span id="year">2026</span> CASTA Sushi · Catamarca, Argentina. Todos los derechos reservados.</span>
-        <span>Hecho para compartir · <a href="#contacto">Reservá tu mesa</a></span>
+        <span>Hecho para compartir · <a class="js-reserva" href="#reservar" role="button">Reservá tu mesa</a></span>
       </div>
     </div>
   </footer>
 
-  <a class="button mobile-cta" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Reservá tu mesa · 0383 488-9878</a>
+  <a class="button mobile-cta js-reserva" href="#reservar" role="button">Reservá tu mesa · 0383 488-9878</a>
+
   <div class="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button aria-label="Cerrar foto">×</button><img alt="Foto ampliada de CASTA"></div>
+
+  <!-- ============ MODAL: FORMULARIO DE RESERVA ============ -->
+  <div class="reserva-modal" id="reservaModal" role="dialog" aria-modal="true" aria-labelledby="reservaTitulo">
+    <div class="reserva-backdrop" data-close-reserva></div>
+    <div class="reserva-card">
+      <button class="reserva-close" type="button" aria-label="Cerrar formulario" data-close-reserva>×</button>
+
+      <div id="reservaFormWrap">
+        <div class="eyebrow">Reservas · CASTA Catamarca</div>
+        <h3 id="reservaTitulo">Reservá tu <em>mesa.</em></h3>
+        <p>Completá tus datos y te confirmamos por WhatsApp. También podés escribirnos directo al 0383 488-9878.</p>
+
+        <form id="reservaForm" novalidate>
+          <div class="field" id="f-nombre">
+            <label for="rNombre">Nombre y apellido</label>
+            <input type="text" id="rNombre" name="nombre" placeholder="Ej.: María González" autocomplete="name" required>
+            <span class="msg">Ingresá tu nombre y apellido.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="f-fecha">
+              <label for="rFecha">Fecha</label>
+              <input type="date" id="rFecha" name="fecha" required>
+              <span class="msg">Elegí una fecha válida.</span>
+            </div>
+            <div class="field" id="f-personas">
+              <label for="rPersonas">Cantidad de asistentes</label>
+              <select id="rPersonas" name="personas" required>
+                <option value="" selected disabled>Seleccioná</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">6 personas</option>
+                <option value="7">7 personas</option>
+                <option value="8">8 personas</option>
+                <option value="9">9 personas</option>
+                <option value="10">10 personas</option>
+                <option value="+10">Más de 10 (grupo grande)</option>
+              </select>
+              <span class="msg">Indicá cuántos vienen.</span>
+            </div>
+          </div>
+
+          <div class="field" id="f-hora">
+            <label for="rHora">Horario preferido <span>(opcional)</span></label>
+            <input type="time" id="rHora" name="hora" min="20:30" step="900">
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="rEmail">E-mail <span>(opcional)</span></label>
+            <input type="email" id="rEmail" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+            <span class="msg">Revisá el formato del e-mail.</span>
+          </div>
+
+          <p class="form-note">Abrimos todos los días a partir de las 20:30 · Mamerto Medina 18, San Fernando del Valle de Catamarca.</p>
+
+          <div class="form-actions">
+            <button class="button" type="submit">Enviar reserva por WhatsApp ↗</button>
+            <button class="button button-outline" type="button" data-close-reserva>Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="reserva-ok" id="reservaOk">
+        <div class="ok-badge" aria-hidden="true">✓</div>
+        <h3>¡Listo, <em id="okNombre">gracias!</em></h3>
+        <p>Tu solicitud de reserva está en camino. Te vamos a confirmar por WhatsApp en breve.</p>
+        <div class="resumen" id="okResumen"></div>
+        <div class="form-actions">
+          <a class="button" id="okWhats" href="https://wa.me/543834889878" target="_blank" rel="noreferrer">Abrir WhatsApp ↗</a>
+          <button class="button button-outline" type="button" data-close-reserva>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     /* Año automático */
     document.getElementById('year').textContent=new Date().getFullYear();
 
-    /* Lightbox */
-    const lightbox=document.querySelector('.lightbox'),lightboxImage=lightbox.querySelector('img');
-    document.querySelectorAll('.gallery-item').forEach(item=>item.addEventListener('click',()=>{lightboxImage.src=item.dataset.full;lightboxImage.alt=item.querySelector('img').alt;lightbox.classList.add('open')}));
-    const closeLightbox=()=>lightbox.classList.remove('open');
-    lightbox.querySelector('button').addEventListener('click',closeLightbox);
-    lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closeMenu()}});
+    /* ============ SCROLL ELEGANTE Y FLUIDO (sin saltos) ============ */
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let scrollAnim=null;
+    function easeInOutCubic(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+    function smoothScrollTo(targetY){
+      if(reduceMotion){window.scrollTo(0,targetY);return}
+      if(scrollAnim)cancelAnimationFrame(scrollAnim);
+      const startY=window.scrollY||window.pageYOffset;
+      const diff=targetY-startY;
+      if(Math.abs(diff)<2)return;
+      const duration=Math.min(1700,Math.max(700,Math.abs(diff)*0.62));
+      let startTime=null;
+      function step(ts){
+        if(startTime===null)startTime=ts;
+        const p=Math.min(1,(ts-startTime)/duration);
+        window.scrollTo(0,startY+diff*easeInOutCubic(p));
+        if(p<1){scrollAnim=requestAnimationFrame(step)}else{scrollAnim=null}
+      }
+      scrollAnim=requestAnimationFrame(step);
+    }
+    /* Se cancela la animación si el usuario toma el control */
+    ['wheel','touchstart','keydown'].forEach(evt=>window.addEventListener(evt,()=>{if(scrollAnim){cancelAnimationFrame(scrollAnim);scrollAnim=null}},{passive:true}));
 
-    /* Header fijo: sombra + progreso + parallax sutil del banner */
+    /* ============ HEADER: sombra + progreso + parallax sutil ============ */
     const siteHeader=document.getElementById('siteHeader');
     const scrollProgress=document.getElementById('scrollProgress');
     const bannerImg=document.getElementById('bannerImg');
@@ -481,7 +616,7 @@
     window.addEventListener('resize',onFrame);
     onFrame();
 
-    /* Menú móvil */
+    /* ============ MENÚ MÓVIL ============ */
     const menuBtn=document.getElementById('menuBtn');
     const mobileNav=document.getElementById('mobileNav');
     function closeMenu(){menuBtn.classList.remove('open');mobileNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Abrir menú')}
@@ -491,17 +626,17 @@
       menuBtn.setAttribute('aria-expanded',String(open));
       menuBtn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
     });
-    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    mobileNav.querySelectorAll('a.mn-link').forEach(a=>a.addEventListener('click',closeMenu));
     window.addEventListener('resize',()=>{if(window.innerWidth>900)closeMenu()});
 
-    /* Revelado sutil al entrar cada sección */
+    /* ============ REVELADOS ============ */
     const revealTargets=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-zoom');
     const revealObserver=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');revealObserver.unobserve(entry.target)}});
     },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
     revealTargets.forEach(el=>revealObserver.observe(el));
 
-    /* Nav: sección activa según el scroll */
+    /* ============ NAV ACTIVA ============ */
     const navLinks=[...document.querySelectorAll('.nav a[data-target]')];
     const sections=navLinks.map(link=>document.getElementById(link.dataset.target)).filter(Boolean);
     const navObserver=new IntersectionObserver(entries=>{
@@ -511,9 +646,10 @@
     },{threshold:.001,rootMargin:'-45% 0px -50% 0px'});
     sections.forEach(sec=>navObserver.observe(sec));
 
-    /* Desplazamiento suave compensando el header fijo */
+    /* ============ NAVEGACIÓN SUAVE COMPENSANDO EL HEADER ============ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
       anchor.addEventListener('click',e=>{
+        if(anchor.classList.contains('js-reserva'))return;
         const id=anchor.getAttribute('href');
         if(id.length<2)return;
         const target=document.querySelector(id);
@@ -521,9 +657,140 @@
         e.preventDefault();
         closeMenu();
         const headerH=siteHeader.offsetHeight;
-        const top=target.getBoundingClientRect().top+window.scrollY-headerH+2;
-        window.scrollTo({top,behavior:'smooth'});
+        smoothScrollTo(target.getBoundingClientRect().top+window.scrollY-headerH+2);
       });
+    });
+
+    /* ============ LIGHTBOX ============ */
+    const lightbox=document.querySelector('.lightbox'),lightboxImage=lightbox.querySelector('img');
+    document.querySelectorAll('.gallery-item').forEach(item=>item.addEventListener('click',()=>{lightboxImage.src=item.dataset.full;lightboxImage.alt=item.querySelector('img').alt;lightbox.classList.add('open');document.body.classList.add('locked')}));
+    const closeLightbox=()=>{lightbox.classList.remove('open');if(!reservaModal.classList.contains('open'))document.body.classList.remove('locked')};
+    lightbox.querySelector('button').addEventListener('click',closeLightbox);
+    lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
+
+    /* ============ FORMULARIO DE RESERVA ============ */
+    const reservaModal=document.getElementById('reservaModal');
+    const reservaForm=document.getElementById('reservaForm');
+    const reservaFormWrap=document.getElementById('reservaFormWrap');
+    const reservaOk=document.getElementById('reservaOk');
+    const WA_NUMBER='543834889878';
+
+    const campoNombre=document.getElementById('rNombre');
+    const campoFecha=document.getElementById('rFecha');
+    const campoPersonas=document.getElementById('rPersonas');
+    const campoHora=document.getElementById('rHora');
+    const campoEmail=document.getElementById('rEmail');
+
+    /* Fecha mínima: hoy */
+    const hoy=new Date();
+    const isoHoy=new Date(hoy.getTime()-hoy.getTimezoneOffset()*60000).toISOString().split('T')[0];
+    campoFecha.min=isoHoy;
+    campoFecha.value=isoHoy;
+
+    let lastFocus=null;
+    function openReserva(){
+      lastFocus=document.activeElement;
+      closeMenu();
+      closeLightbox();
+      reservaFormWrap.style.display='block';
+      reservaOk.classList.remove('show');
+      reservaModal.classList.add('open');
+      document.body.classList.add('locked');
+      setTimeout(()=>campoNombre.focus({preventScroll:true}),120);
+    }
+    function closeReserva(){
+      reservaModal.classList.remove('open');
+      if(!lightbox.classList.contains('open'))document.body.classList.remove('locked');
+      if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
+    }
+    document.querySelectorAll('.js-reserva').forEach(btn=>{
+      btn.addEventListener('click',e=>{e.preventDefault();openReserva()});
+    });
+    document.querySelectorAll('[data-close-reserva]').forEach(el=>el.addEventListener('click',closeReserva));
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){
+        if(reservaModal.classList.contains('open')){closeReserva();return}
+        closeLightbox();closeMenu();
+      }
+    });
+
+    function setError(fieldId,hasError){document.getElementById(fieldId).classList.toggle('error',hasError)}
+    function formatDateES(iso){
+      if(!iso)return '';
+      const p=iso.split('-');
+      if(p.length!==3)return iso;
+      return p[2]+'/'+p[1]+'/'+p[0];
+    }
+
+    ['rNombre','rFecha','rPersonas'].forEach(id=>{
+      document.getElementById(id).addEventListener('input',()=>{
+        const wrap=document.getElementById(id).closest('.field');
+        if(wrap)wrap.classList.remove('error');
+      });
+      document.getElementById(id).addEventListener('change',()=>{
+        const wrap=document.getElementById(id).closest('.field');
+        if(wrap)wrap.classList.remove('error');
+      });
+    });
+    campoEmail.addEventListener('input',()=>document.getElementById('f-email').classList.remove('error'));
+
+    reservaForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const nombre=campoNombre.value.trim();
+      const fecha=campoFecha.value;
+      const personas=campoPersonas.value;
+      const hora=campoHora.value;
+      const email=campoEmail.value.trim();
+
+      let ok=true;
+      const errNombre=nombre.length<3||!/\s/.test(nombre);
+      setError('f-nombre',errNombre); if(errNombre)ok=false;
+
+      const errFecha=!fecha||fecha<isoHoy;
+      setError('f-fecha',errFecha); if(errFecha)ok=false;
+
+      const errPers=!personas;
+      setError('f-personas',errPers); if(errPers)ok=false;
+
+      const errMail=!!email&&!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email);
+      setError('f-email',errMail); if(errMail)ok=false;
+
+      if(!ok){
+        const primer=document.querySelector('.field.error input,.field.error select');
+        if(primer)primer.focus({preventScroll:false});
+        return;
+      }
+
+      const fechaTexto=formatDateES(fecha);
+      const horaTexto=hora?hora:'A convenir (abrimos 20:30)';
+      const personasTexto=personas==='+10'?'Más de 10 personas':personas+(personas==='1'?' persona':' personas');
+      const emailTexto=email||'No informado';
+
+      const mensaje=
+        '¡Hola CASTA! Quiero reservar una mesa.\n\n'+
+        '• Nombre y apellido: '+nombre+'\n'+
+        '• Fecha: '+fechaTexto+'\n'+
+        '• Horario: '+horaTexto+'\n'+
+        '• Asistentes: '+personasTexto+'\n'+
+        '• E-mail: '+emailTexto+'\n\n'+
+        'Enviado desde la web de CASTA.';
+
+      const waUrl='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(mensaje);
+      document.getElementById('okWhats').href=waUrl;
+      document.getElementById('okNombre').textContent=nombre.split(' ')[0]+'!';
+      document.getElementById('okResumen').innerHTML=
+        '<div><b>Nombre:</b> '+nombre+'</div>'+
+        '<div><b>Fecha:</b> '+fechaTexto+'</div>'+
+        '<div><b>Horario:</b> '+horaTexto+'</div>'+
+        '<div><b>Asistentes:</b> '+personasTexto+'</div>'+
+        '<div><b>E-mail:</b> '+emailTexto+'</div>';
+
+      reservaForm.reset();
+      campoFecha.value=isoHoy;
+      reservaFormWrap.style.display='none';
+      reservaOk.classList.add('show');
+      reservaModal.querySelector('.reserva-card').scrollTop=0;
+      window.open(waUrl,'_blank','noopener');
     });
   </script>
 </body>
